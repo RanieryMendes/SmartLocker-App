@@ -2,6 +2,7 @@ import csv
 import pandas as pd 
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
+from data import token
 import os
 
 import dropbox
@@ -20,7 +21,7 @@ class Bank():
         self.password = "13324"
 
     def initalization_dropbox(self):
-        dbx = dropbox.Dropbox('s2jn4M5DROAAAAAAAAABX4etbXh0ri9SeMLP1f-NlPydUKo3aBeCD-9Bnn3Z_63H')
+        dbx = dropbox.Dropbox(token)
         print("Test if connection with API works")
         dbx.users_get_current_account()
         #print(dbx.files_list_folder("/Apps/locker/"))
@@ -46,7 +47,7 @@ class Bank():
 
             writer.writerow([self.account, self.login, self.password])
 
-        dbx = dropbox.Dropbox('s2jn4M5DROAAAAAAAAABX4etbXh0ri9SeMLP1f-NlPydUKo3aBeCD-9Bnn3Z_63H')
+        dbx = dropbox.Dropbox(token)
         print("Test if connection with API works")
         dbx.users_get_current_account()    
 
